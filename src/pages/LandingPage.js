@@ -3,7 +3,7 @@ import { signInWithGoogle } from "../services/auth";
 
 const LandingPage = () => {
   const {setUser} = useAuth();
-
+  
   const signInClickHandler = async () => {
     const signedInUser = await signInWithGoogle();
 		if (signedInUser) {
