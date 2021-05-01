@@ -1,10 +1,14 @@
 import "./App.css";
-import { LandingPage } from "./pages";
+import { ChatPage, HomePage, LandingPage } from "./pages";
 
 function App() {
   return (
-    <div className="App bg-gray-100">
-      <LandingPage />
+    <div className="App">
+      <div className="w-5/6 mx-auto my-0.5">
+        <ChatPage />
+        {/* <HomePage /> */}
+        {/* <LandingPage /> */}
+      </div>
     </div>
   );
 }
