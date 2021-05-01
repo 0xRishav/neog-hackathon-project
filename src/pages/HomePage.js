@@ -35,7 +35,7 @@ const HomePage = () => {
           alt="profile-image"
           className="h-12 w-12 object-cover rounded-lg"
         />
-        <button className="px-4 py-1 bg-blue-500 rounded-md my-6">
+        <button className="px-4 py-1 bg-blue-500 rounded-md my-6 text-white">
           Create Room
         </button>
       </div>
