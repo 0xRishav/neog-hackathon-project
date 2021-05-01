@@ -1,15 +1,9 @@
 import { useAuth } from "../context/authContext";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { signInWithGoogle } from "../services/auth";
 
 const LandingPage = () => {
-  const {setUser} = useAuth();
-  
-  const signInClickHandler = async () => {
-    const signedInUser = await signInWithGoogle();
-		if (signedInUser) {
-			setUser(signedInUser);
-		}
-  }
+  const { signInClickHandler} = useAuth();
 
   return (
     <div className="flex justify-center items-center flex-col h-screen">
