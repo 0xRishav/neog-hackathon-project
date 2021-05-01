@@ -33,9 +33,9 @@ const HomePage = () => {
         <img
           src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
           alt="profile-image"
-          className="h-12 w-12 object-cover rounded-lg"
+          className="h-12 w-12 object-cover rounded-2xl"
         />
-        <button className="px-4 py-1 bg-blue-500 rounded-md my-6 text-white">
+        <button className="px-4 py-1 bg-blue-500 rounded-2xl my-6 text-white">
           Create Room
         </button>
       </div>
