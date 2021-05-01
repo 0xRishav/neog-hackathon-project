@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RoomCard } from "../components";
 import { CreateRoomForm, EndRoom } from "../components";
+import { useAuth } from "../context/authContext";
 
 const HomePage = () => {
   const [formDisplay, setFormDisplay] = useState("none");
