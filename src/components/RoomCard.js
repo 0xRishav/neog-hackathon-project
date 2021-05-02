@@ -1,4 +1,5 @@
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { Link } from 'react-router-dom';
 import { db, auth } from "../firebase";
 
 const RoomCard = ({ room, TotalSpeakers }) => {
@@ -21,6 +22,7 @@ const RoomCard = ({ room, TotalSpeakers }) => {
     console.log("updated")
   }
   return (
+    <Link to={`/room/${room.id}`}>
     <div className="bg-white p-6 cursor-pointer rounded-2xl my-6" onClick={() => addParticipantClickHandler(room)}>
       <div className="flex justify-between items-center w-full mb-4">
         <h1>{room.topic}</h1>
@@ -52,6 +54,7 @@ const RoomCard = ({ room, TotalSpeakers }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

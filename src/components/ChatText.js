@@ -22,7 +22,7 @@ const ChatText = ({ userId, userProfileImg, text, userName }) => {
       >
         <img
           src={userProfileImg}
-          alt="profile-image"
+          alt="profilepic"
           className="h-10 w-10 object-cover rounded-2xl"
         />
         <p className="mx-2 text-black opacity-80">{userName}</p>
