@@ -51,7 +51,7 @@ const RoomParticipantsScreen = ({setIsOnChatScreen }) => {
               src={item.photoUrl}
               alt="Participantpic"
             />
-            <p>{item.name}</p>
+            <p>{item.name.split(" ", 1)}</p>
           </div>
         ))}
       </div>

@@ -27,7 +27,7 @@ const ChatText = ({ userId, photoUrl, text, name }) => {
           alt="profilepic"
           className="h-10 w-10 object-cover rounded-2xl"
         />
-        <p className="mx-2 text-black opacity-80">{name}</p>
+        <p className="mx-2 text-black opacity-80">{name.split(" ", 1)}</p>
       </div>
     </div>
   );
