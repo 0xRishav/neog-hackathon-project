@@ -1,4 +1,3 @@
-import "./App.css";
 import { ChatPage, HomePage, LandingPage } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/authContext";
