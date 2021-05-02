@@ -35,7 +35,7 @@ const ChatPageHeader = () => {
         newHost = filteredParticipants.filter(user => user.isOnStage !== true)[0];
       }
       console.log(newHost);
-      await db.collection('chatRooms').doc(roomId).update({participants: filteredParticipants});
+      await db.collection('chatRooms').doc(roomId).update({participants: filteredParticipants, host: newHost});
       console.log("left bbye");
       navigate("/");
     }

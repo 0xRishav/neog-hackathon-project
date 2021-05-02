@@ -14,6 +14,7 @@ const HomePage = () => {
   const query = chatRoomRef.orderBy('startTime');
   const [chatRooms] = useCollectionData(query, { idField: 'id' })
 
+  console.log("what is the error", auth.currentUser);
   const {photoURL} = auth.currentUser;
   return (
     <div className="">
