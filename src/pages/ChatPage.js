@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react";
-import { db, auth } from "../firebase";
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {
   ChatPageHeader,
   ChatText,
   RoomChatScreen,
   RoomParticipantsScreen,
 } from "../components";
-import { useParams } from "react-router";
+import { useState } from "react";
 
 const ChatPage = () => {
   const [isOnChatScreen, setIsOnChatScreen] = useState(true);
-  const [roomData, setRoomData] = useState({});
+  
   const dummyRoom = {
     roomName: "Test Room",
     host: "Rishav",
@@ -142,37 +139,16 @@ const ChatPage = () => {
     ],
   };
 
-  useEffect(() => {
-    (async () => {
-      try{
-        const result = await db.collection('chatRooms').doc(roomId).get();
-        console.log("line 149", result.data());
-        setRoomData(result.data());
-      }
-      catch(err){
-        console.log(err);
-      }
-    })();
-  }, [])
-
-
-  const {roomId} = useParams();
-  console.log(roomId);
-
-  console.log("line 154", roomData)
-
   return (
     <div>
       <ChatPageHeader />
-      {(isOnChatScreen && roomData) ? (
+      {(isOnChatScreen) ? ( 
         <RoomChatScreen
           setIsOnChatScreen={setIsOnChatScreen}
-          room={roomData}
         />
       ) : (
         <RoomParticipantsScreen
           setIsOnChatScreen={setIsOnChatScreen}
-          room={roomData}
         />
       )}
     </div>

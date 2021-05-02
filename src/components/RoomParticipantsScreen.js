@@ -30,7 +30,7 @@ const RoomParticipantsScreen = ({ dummyRoom, setIsOnChatScreen }) => {
             <img
               className="h-10 w-10 object-cover rounded-2xl "
               src={participant.img}
-              alt="participant-image"
+              alt="participantpic"
             />
             <p>{participant.name}</p>
           </div>

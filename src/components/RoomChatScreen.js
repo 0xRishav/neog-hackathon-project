@@ -2,32 +2,55 @@ import { ChatText } from "../components";
 import { FaUserFriends } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import { auth, db } from "../firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
-const RoomChatScreen = ({ setIsOnChatScreen, room }) => {
+const RoomChatScreen = ({ setIsOnChatScreen }) => {
   const [text, setText] = useState("")
+  const [room, setRoom] = useState({});
+  const {roomId} = useParams();
 
-  const sendMessageClickHandler =  async (e, room) => {
+  useEffect(() => {
+    (async () => {
+      try{
+        const result = await db.collection('chatRooms').doc(roomId).get();
+        setRoom(result.data());
+      }
+      catch(err){
+        console.log(err);
+      }
+    })();
+  }, [room.messages])
+
+  const sendMessageClickHandler =  async (e) => {
     e.preventDefault();
     const {uid, displayName, photoURL} = auth.currentUser;
 
     const chatRoomRef = db.collection('chatRooms');
 
-    const messages = room.messages.concat({
-      text: text,
-      chatRoom: room.id,
-      userId: uid,
-      name: displayName,
-      photoUrl: photoURL,
-      createdAt: new Date(),
-    })
-    console.log("updating messaged..", messages)
-    await chatRoomRef.doc(room.id).update({messages: messages})
+    try{
+      console.log("line32: ",room.messages);
+      const msg = room.messages.concat([{
+        text: text,
+        chatRoom: roomId,
+        userId: uid,
+        name: displayName,
+        photoUrl: photoURL,
+        createdAt: new Date(),
+      }])
 
-    console.log("updated messages")
+      setText("");
+      console.log("updating message..", msg);
+      await chatRoomRef.doc(roomId).update({messages: msg})
+  
+      console.log("updated messages")
+    }
+    catch(err){
+      console.log(err);
+    }
+    
   }
 
-  console.log("room data is",room);
   return (
     <div className="mb-20">
     {room?.messages?.map((msg, index) => (
@@ -37,7 +60,7 @@ const RoomChatScreen = ({ setIsOnChatScreen, room }) => {
         <div className="w-5/6 mx-auto flex items-center">
           <div className="bg-2 rounded-2xl relative">
             <form 
-            onSubmit={sendMessageClickHandler}
+            onSubmit={(e) => sendMessageClickHandler(e)}
             >
               <input
                 type="text"
