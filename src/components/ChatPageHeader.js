@@ -29,7 +29,7 @@ const ChatPageHeader = () => {
 
   const leaveRoom=async ()=>{
     try{
-      console.log("lone 12", room, roomId)
+      console.log("line 12", room, roomId)
       const userId = auth.currentUser.uid
       console.log("leaving user's id is...",userId);
       const result = room.participants;
