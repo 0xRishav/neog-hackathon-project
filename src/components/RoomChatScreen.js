@@ -4,64 +4,65 @@ import { IoMdSend } from "react-icons/io";
 import { auth, db } from "../firebase";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useRef } from "react";
 
 const RoomChatScreen = ({ setIsOnChatScreen }) => {
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
   const [room, setRoom] = useState({});
-  const {roomId} = useParams();
+  const { roomId } = useParams();
+  const scrollDiv = useRef();
 
   useEffect(() => {
     (async () => {
-      try{
-        const result = await db.collection('chatRooms').doc(roomId).get();
+      try {
+        const result = await db.collection("chatRooms").doc(roomId).get();
         setRoom(result.data());
-      }
-      catch(err){
+      } catch (err) {
         console.log(err);
       }
     })();
-  }, [room.messages])
+  }, [room.messages]);
 
-  const sendMessageClickHandler =  async (e) => {
+  const sendMessageClickHandler = async (e) => {
     e.preventDefault();
-    const {uid, displayName, photoURL} = auth.currentUser;
+    const { uid, displayName, photoURL } = auth.currentUser;
 
-    const chatRoomRef = db.collection('chatRooms');
+    const chatRoomRef = db.collection("chatRooms");
 
-    try{
-      console.log("line32: ",room.messages);
-      const msg = room.messages.concat([{
-        text: text,
-        chatRoom: roomId,
-        userId: uid,
-        name: displayName,
-        photoUrl: photoURL,
-        createdAt: new Date(),
-      }])
+    try {
+      console.log("line32: ", room.messages);
+      const msg = room.messages.concat([
+        {
+          text: text,
+          chatRoom: roomId,
+          userId: uid,
+          name: displayName,
+          photoUrl: photoURL,
+          createdAt: new Date(),
+        },
+      ]);
 
       setText("");
       console.log("updating message..", msg);
-      await chatRoomRef.doc(roomId).update({messages: msg})
-  
-      console.log("updated messages")
-    }
-    catch(err){
+      await chatRoomRef.doc(roomId).update({ messages: msg });
+
+      console.log("updated messages");
+    } catch (err) {
       console.log(err);
     }
-    
-  }
+    scrollDiv.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="mb-20">
-    {room?.messages?.map((msg, index) => (
-      <ChatText {...msg} key={index} />
-    ))}
+      {room?.messages?.map((msg, index) => (
+        <ChatText {...msg} key={index} />
+      ))}
+      <div ref={scrollDiv} className="scrollDiv"></div>
       <div className="flex items-center fixed mx-auto w-5/6 bottom-0 fade--bottom">
         <div className="w-5/6 mx-auto flex items-center">
           <div className="bg-2 rounded-2xl relative">
-            <form 
-            onSubmit={(e) => sendMessageClickHandler(e)}
-            >
+            <form onSubmit={(e) => sendMessageClickHandler(e)}>
               <input
                 type="text"
                 value={text}
@@ -79,8 +80,7 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
         <FaUserFriends size="30" onClick={() => setIsOnChatScreen(false)} />
       </div>
     </div>
-  
-    );
+  );
 };
 
 export default RoomChatScreen;
