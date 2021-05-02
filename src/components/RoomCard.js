@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import { db, auth } from "../firebase";
 
 import { useEffect, useState } from "react";
-=======
 import { checkIfExists } from '../utils';
 
 
@@ -63,7 +62,7 @@ const RoomCard = ({ room, TotalSpeakers }) => {
               </span>
             </div>
           ))}
-
+            </div>
         </div>
       </div>
     </Link>

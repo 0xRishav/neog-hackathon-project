@@ -4,7 +4,7 @@ import { EndRoom } from "./EndRoom";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import {auth, db} from "../firebase";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 
 const ChatPageHeader = () => {

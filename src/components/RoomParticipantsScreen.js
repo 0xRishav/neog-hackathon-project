@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
+  const [handRaised, setHandRaised] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -23,6 +24,12 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
 
   console.log(room);
 
+  const handRaisedClickHandler = () => {
+    setHandRaised(true);
+    const {uid} = auth.currentUser;
+    const currUser = room.participants.filter(item => item.id === uid);
+  }
+
   return (
     <div>
       <h1 className="font-bold text-lg mb-4">Stage</h1>
@@ -31,7 +38,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
           ?.filter((item) => item.isOnStage === true)
           .map((item, index) => (
             <div className="m-2 relative" key={index}>
-              {true && (
+              {handRaised && (
                 <div
                   className="p-1 absolute bg-blue-500 rounded-full"
                   style={{ top: "-6px", right: "-6px" }}
@@ -59,7 +66,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
           ?.filter((item) => item.isOnStage === false)
           .map((item, index) => (
             <div className="m-2 relative" key={index}>
-              {true && (
+              {handRaised && (
                 <div
                   className="p-1 absolute bg-blue-500 rounded-full"
                   style={{ top: "-6px", right: "-6px" }}
@@ -79,7 +86,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
           ))}
       </div>
       <div className="flex justify-start items-center fixed bottom-12">
-        <button className="flex items-center px-4 py-1 bg-blue-500 rounded-2xl my-6">
+        <button className="flex items-center px-4 py-1 bg-blue-500 rounded-2xl my-6" onClick={handRaisedClickHandler}>
           Raise Hand <IoMdHand size="40" />
         </button>
         <IoIosChatbubbles
