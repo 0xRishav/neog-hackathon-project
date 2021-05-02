@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-// import  {data } from "../database";
 
 const UserContext = createContext();
 const usersDb = [];
