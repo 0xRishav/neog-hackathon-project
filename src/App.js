@@ -11,6 +11,7 @@ function App() {
       <div className="w-5/6 mx-auto my-0.5">
           <Routes>
             <Route path="/" element={user === null ? <LandingPage /> : <HomePage />} />
+            <Route path="/room" element={<ChatPage />} />
            </Routes>
       </div>
     </div>
