@@ -3,9 +3,8 @@ import { ChatPage, HomePage, LandingPage } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/authContext";
 
-
 function App() {
-  const {user} = useAuth();
+  const { user } = useAuth();
   return (
     <div className="App">
       <div className="w-5/6 mx-auto my-0.5">

@@ -1,7 +1,13 @@
-import { ChatPageHeader, ChatText } from "../components";
-// import { BiSend } from "react-icon/bi";
+import { useState } from "react";
+import {
+  ChatPageHeader,
+  ChatText,
+  RoomChatScreen,
+  RoomParticipantsScreen,
+} from "../components";
 
 const ChatPage = () => {
+  const [isOnChatScreen, setIsOnChatScreen] = useState(true);
   const dummyRoom = {
     roomName: "Test Room",
     host: "Rishav",
@@ -13,6 +19,64 @@ const ChatPage = () => {
       },
       {
         name: "Ritika",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+    ],
+
+    attendees: [
+      {
+        name: "Danish",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Ritika",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
+        img:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      },
+      {
+        name: "Rishav",
         img:
           "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
       },
@@ -76,13 +140,17 @@ const ChatPage = () => {
   return (
     <div>
       <ChatPageHeader />
-      {dummyRoom.chats.map((chat, index) => (
-        <ChatText {...chat} key={index} />
-      ))}
-      <div className="fixed bottom-6">
-        <input type="text" placeholder="Type here..." className="" />
-        <button>Send</button>
-      </div>
+      {isOnChatScreen ? (
+        <RoomChatScreen
+          setIsOnChatScreen={setIsOnChatScreen}
+          dummyRoom={dummyRoom}
+        />
+      ) : (
+        <RoomParticipantsScreen
+          setIsOnChatScreen={setIsOnChatScreen}
+          dummyRoom={dummyRoom}
+        />
+      )}
     </div>
   );
 };
