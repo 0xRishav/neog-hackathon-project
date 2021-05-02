@@ -4,11 +4,14 @@ import { IoMdSend } from "react-icons/io";
 import { auth, db } from "../firebase";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useRef } from "react";
 
 const RoomChatScreen = ({ setIsOnChatScreen }) => {
   const [text, setText] = useState("");
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
+
+  const scrollDiv = useRef();
 
   useEffect(() => {
     (async () => {
@@ -26,6 +29,8 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
     const { uid, displayName, photoURL } = auth.currentUser;
 
     const chatRoomRef = db.collection("chatRooms");
+
+
     console.log("chatroom ref is...", chatRoomRef);
 
     try {
@@ -37,8 +42,8 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
           userId: uid,
           name: displayName,
           photoUrl: photoURL,
-          createdAt: new Date()
-        }
+          createdAt: new Date(),
+        },
       ]);
 
       setText("");
@@ -49,6 +54,7 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
     } catch (err) {
       console.log(err);
     }
+    scrollDiv.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -56,6 +62,7 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
       {room?.messages?.map((msg, index) => (
         <ChatText {...msg} key={index} />
       ))}
+      <div ref={scrollDiv} className="scrollDiv"></div>
       <div className="flex items-center fixed mx-auto w-5/6 bottom-0 fade--bottom">
         <div className="w-5/6 mx-auto flex items-center">
           <div className="bg-2 rounded-2xl relative">
