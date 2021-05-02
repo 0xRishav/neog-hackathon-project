@@ -6,14 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import {AuthContextProvider} from './context/authContext';
 import { UserProvider } from './context/userContext';
 import { BrowserRouter as Router } from "react-router-dom";
+import { RoomProvider } from "./context";
 
 ReactDOM.render(
   <React.StrictMode>
   <Router>
   <AuthContextProvider>
+  <RoomProvider>
   <UserProvider>
     <App />
   </UserProvider>
+  </RoomProvider>
   </AuthContextProvider>
 </Router>
   </React.StrictMode>,

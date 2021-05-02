@@ -14,6 +14,8 @@ const HomePage = () => {
   const query = chatRoomRef.orderBy('startTime');
   const [chatRooms] = useCollectionData(query, { idField: 'id' })
 
+  console.log("what is the error", auth.currentUser);
+  const {photoURL} = auth.currentUser;
   return (
     <div className="">
       <CreateRoomForm
@@ -23,7 +25,7 @@ const HomePage = () => {
       <EndRoom endDisplay={endDisplay} setEndDisplay={setEndDisplay} />
       <div className="flex justify-between items-center">
         <img
-          src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          src={photoURL}
           alt="host"
           className="h-12 w-12 object-cover rounded-2xl"
         />
