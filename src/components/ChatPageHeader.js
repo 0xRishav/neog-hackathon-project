@@ -5,13 +5,18 @@ import { Link } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import {useAuth} from "../context/authContext";
 
 const ChatPageHeader = () => {
   const [endDisplay, setEndDisplay] = useState("none");
+  const {currentUser} = useAuth();
 
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
   const navigate = useNavigate();
+
+  // const  uid  = auth.currentUser && auth.currentUser.uid;
 
   useEffect(() => {
     (async () => {
@@ -49,9 +54,10 @@ const ChatPageHeader = () => {
     }
   };
 
+
   return (
     <div className="flex justify-between items-center">
-      <EndRoom endDisplay={endDisplay} setEndDisplay={setEndDisplay} />
+    <EndRoom endDisplay={endDisplay} setEndDisplay={setEndDisplay} /> 
       <Link to="/">
         <IoIosArrowBack size="30" />
       </Link>
@@ -62,6 +68,12 @@ const ChatPageHeader = () => {
         Leave
         <IoIosArrowRoundForward style={{ marginLeft: "5px" }} />
       </button>
+        <button
+          onClick={() => setEndDisplay("block")}
+          className="px-4 py-1 bg-blue-500 rounded-md my-6"
+        >
+          End Chat
+        </button>
     </div>
   );
 };
