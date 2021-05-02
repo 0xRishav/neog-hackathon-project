@@ -3,12 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/authContext";
 
 function App() {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   return (
     <div className="App">
       <div className="w-5/6 mx-auto my-0.5">
           <Routes>
-            <Route path="/" element={user === null ? <LandingPage /> : <HomePage />} />
+            <Route path="/" element={currentUser === null ? <LandingPage /> : <HomePage />} />
             <Route path="/room/:roomId" element={<ChatPage />} />
            </Routes>
       </div>

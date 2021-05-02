@@ -10,6 +10,7 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
   const [text, setText] = useState("");
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
+
   const scrollDiv = useRef();
 
   useEffect(() => {
@@ -28,6 +29,9 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
     const { uid, displayName, photoURL } = auth.currentUser;
 
     const chatRoomRef = db.collection("chatRooms");
+
+
+    console.log("chatroom ref is...", chatRoomRef);
 
     try {
       console.log("line32: ", room.messages);
