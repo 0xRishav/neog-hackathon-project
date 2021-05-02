@@ -10,7 +10,7 @@ const RoomChatScreen = ({ setIsOnChatScreen, room }) => {
       ))}
       <div className="flex items-center fixed bottom-6">
         <div className="">
-          <input type="text" placeholder="Type here..." className="w-3/6" />
+          <input type="text" placeholder="Type here..." className="w-3/6"/>
           <button>
             <IoMdSend />
           </button>
