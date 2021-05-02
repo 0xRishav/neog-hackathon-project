@@ -5,20 +5,26 @@ const RoomCard = ({ room, TotalSpeakers }) => {
   const chatRoomRef = db.collection('chatRooms');
 
   const addParticipantClickHandler =  async (room) => {
-    const {uid, email, displayName, photoURL} = auth.currentUser;
+    try{
+      const {uid, email, displayName, photoURL} = auth.currentUser;
 
-    const participants = room.participants.concat({
-      id: uid,
-      chatRoom: room.id,
-      email: email,
-      isHandRaised: false,
-      isOnStage: false,
-      name: displayName,
-      photoUrl: photoURL})
-    console.log("updating..", participants)
-    await chatRoomRef.doc(room.id).update({participants: participants})
+      const participants = room.participants.concat({
+        id: uid,
+        chatRoom: room.id,
+        email: email,
+        isHandRaised: false,
+        isOnStage: false,
+        name: displayName,
+        photoUrl: photoURL})
+      console.log("updating..", participants)
+      await chatRoomRef.doc(room.id).update({participants: participants})
+  
+      console.log("updated")
+    }
+    catch(err){
+      console.log(err);
+    }
 
-    console.log("updated")
   }
   return (
     <Link to={`/room/${room.id}`}>
@@ -45,7 +51,7 @@ const RoomCard = ({ room, TotalSpeakers }) => {
               <span
                 className="h-8 w-8 object-cover rounded-2xl mx-1"
               >
-                {`${item.name}`}
+                {`${item.name.split(" ", 1)}`}
                 {index < room.participants.length - 1 ? "," : ""}
               </span>
             </div>

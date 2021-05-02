@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { auth, db } from "../firebase";
 
 
 export const CreateRoomForm = ({ formDisplay, setFormDisplay }) => {
   const [topic, setTopic] = useState("");
-
+  const navigate = useNavigate();
   const chatRoomRef = db.collection('chatRooms');
+  const roomId = useParams();
 
   const createRoom = async(e) => {
     e.preventDefault();
@@ -14,20 +16,29 @@ export const CreateRoomForm = ({ formDisplay, setFormDisplay }) => {
       endTime: "",
       host: {
         id: uid,
-        chatRoom: true,
+        chatRoom: roomId,
         email: email,
         isHandRaised: false,
         isOnStage: true,
         name: displayName,
         photoUrl: photoURL},
       messages: [],
-      participants: [],
+      participants: [{
+        id: uid,
+        chatRoom: roomId,
+        email: email,
+        isHandRaised: false,
+        isOnStage: true,
+        name: displayName,
+        photoUrl: photoURL}],
       topic: topic,
       startTime: new Date()
     })
     .then(() => {
       setTopic("")
       console.log("ChatRoom successfully written in Firestore!");
+      setFormDisplay(!formDisplay);
+      // navigate(`/room/${roomId}`)
     })
     .catch((error) => {
         console.error("Error writing chatRooms document: ", error);
