@@ -2,10 +2,10 @@ import { ChatText } from "../components";
 import { FaUserFriends } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 
-const RoomChatScreen = ({ setIsOnChatScreen, dummyRoom }) => {
+const RoomChatScreen = ({ setIsOnChatScreen, room }) => {
   return (
     <div className="mb-20">
-      {dummyRoom.chats.map((chat, index) => (
+      {room.chats.map((chat, index) => (
         <ChatText {...chat} key={index} />
       ))}
       <div className="flex items-center fixed mx-auto w-5/6 bottom-0 fade--bottom">
