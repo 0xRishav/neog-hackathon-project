@@ -25,7 +25,7 @@ export const signInWithGoogle = async () => {
       isHandRaised: false,
       isOnStage: false,
       name: displayName,
-      photoUrl: photoURL
+      photoUrl: photoURL,
     })
     .then(() => {
       console.log("User successfully written in Firestore!");
@@ -36,4 +36,3 @@ export const signInWithGoogle = async () => {
 
   return user;
 };
-
