@@ -1,4 +1,3 @@
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Link } from 'react-router-dom';
 import { db, auth } from "../firebase";
 

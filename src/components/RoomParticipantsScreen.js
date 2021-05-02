@@ -14,7 +14,7 @@ const RoomParticipantsScreen = ({ dummyRoom, setIsOnChatScreen }) => {
             <img
               className="h-10 w-10 object-cover rounded-2xl "
               src={speaker.img}
-              alt="speaker-image"
+              alt="speakerpic"
             />
             <p>{speaker.name}</p>
           </div>
