@@ -1,6 +1,6 @@
 const RoomCard = ({ dummyRoom, TotalSpeakers }) => {
   return (
-    <div className="bg-white p-6 cursor-pointer rounded-xl my-6">
+    <div className="bg-white p-6 cursor-pointer rounded-2xl my-6">
       <div className="flex justify-between items-center w-full mb-4">
         {dummyRoom.roomName}
         <p>{dummyRoom.participants}</p>
@@ -13,7 +13,7 @@ const RoomCard = ({ dummyRoom, TotalSpeakers }) => {
                 src={speaker.img}
                 alt="speaker-image"
                 key={index}
-                className="h-8 w-8 object-cover rounded-md mx-1"
+                className="h-8 w-8 object-cover rounded-2xl mx-1"
               />
             </div>
           ))}
@@ -23,7 +23,7 @@ const RoomCard = ({ dummyRoom, TotalSpeakers }) => {
             <div className="">
               <span
                 key={index}
-                className="h-8 w-8 object-cover rounded-md mx-1"
+                className="h-8 w-8 object-cover rounded-2xl mx-1"
               >
                 {`${speaker.name}`}
                 {index < TotalSpeakers - 1 ? "," : ""}

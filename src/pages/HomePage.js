@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RoomCard } from "../components";
 import { CreateRoomForm, EndRoom } from "../components";
+import { useAuth } from "../context/authContext";
 
 const HomePage = () => {
   const [formDisplay, setFormDisplay] = useState("none");
@@ -26,6 +27,55 @@ const HomePage = () => {
           "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
       }
     ],
+    chats: [
+      {
+        userId: 1,
+        text:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+      {
+        userId: 2,
+        text:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+      {
+        userId: 3,
+        text:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+      {
+        userId: 4,
+        text:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.text of the printing and typesetting industry",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+      {
+        userId: 5,
+        text:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.printing and typesetting industry",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+      {
+        userId: 6,
+        text: "Lorem Ipsum is",
+        userProfileImg:
+          "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        userName: "Chhota Bheem",
+      },
+    ],
     participants: 8
   };
 
@@ -43,13 +93,10 @@ const HomePage = () => {
         <img
           src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
           alt="profile-image"
-          className="h-12 w-12 object-cover rounded-lg"
+          className="h-12 w-12 object-cover rounded-2xl"
         />
-        <button
-          onClick={() => setFormDisplay("block")}
-          className="px-4 py-1 bg-blue-500 rounded-md my-6"
-        >
-          Create Room Now!!
+        <button onClick={() => setFormDisplay("block")} className="px-4 py-1 bg-blue-500 rounded-2xl my-6 text-white">
+          Create Room
         </button>
         <button
           onClick={() => setEndDisplay("block")}
