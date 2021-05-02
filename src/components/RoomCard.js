@@ -70,23 +70,6 @@ const RoomCard = ({ room, TotalSpeakers }) => {
                 </div>
               ))}
           </div>
-          <div className="flex items-center mt-2">
-            {room.participants
-              .filter((item) => item.isOnStage === true)
-              .map((item, index) => (
-                <div className="" key={index}>
-                  <span className="h-8 w-8 object-cover rounded-2xl mx-1">
-                    {`${item.name.split(" ", 1)}`}
-                    {index <
-                    room.participants.filter((item) => item.isOnStage === true)
-                      .length -
-                      1
-                      ? ","
-                      : ""}
-                  </span>
-                </div>
-              ))}
-          </div>
         </div>
       </div>
     </Link>
