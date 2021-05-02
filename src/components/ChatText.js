@@ -1,15 +1,17 @@
-const ChatText = ({ userId, userProfileImg, text, userName }) => {
-  const currentUserId = 3;
+import {auth} from '../firebase';
+
+const ChatText = ({ userId, photoUrl, text, name }) => {
+  const currentUserId = auth.currentUser.uid;
   return (
     <div>
       <div
-        class={
+        className={
           userId === currentUserId
             ? "talk-bubble tri-right round btm-right"
             : "talk-bubble tri-right round btm-left"
         }
       >
-        <div class="talktext">
+        <div className="talktext">
           <p>{text}</p>
         </div>
       </div>
@@ -21,11 +23,11 @@ const ChatText = ({ userId, userProfileImg, text, userName }) => {
         }
       >
         <img
-          src={userProfileImg}
+          src={photoUrl}
           alt="profilepic"
           className="h-10 w-10 object-cover rounded-2xl"
         />
-        <p className="mx-2 text-black opacity-80">{userName}</p>
+        <p className="mx-2 text-black opacity-80">{name}</p>
       </div>
     </div>
   );

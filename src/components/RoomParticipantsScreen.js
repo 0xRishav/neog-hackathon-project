@@ -2,21 +2,40 @@ import { BsChatQuoteFill } from "react-icons/bs";
 import { IoMdHand } from "react-icons/io";
 import { IoHandRightSharp } from "react-icons/io";
 import { IoIosChatbubbles } from "react-icons/io";
+import { useState, useEffect } from "react";
+import { auth, db } from "../firebase";
+import { useParams } from "react-router";
 
-const RoomParticipantsScreen = ({ dummyRoom, setIsOnChatScreen }) => {
-  console.log(dummyRoom.participants);
+const RoomParticipantsScreen = ({setIsOnChatScreen }) => {
+  const [room, setRoom] = useState({});
+  const {roomId} = useParams();
+
+  useEffect(() => {
+    (async () => {
+      try{
+        const result = await db.collection('chatRooms').doc(roomId).get();
+        setRoom(result.data());
+      }
+      catch(err){
+        console.log(err);
+      }
+    })();
+  }, [])
+
+  console.log(room);
+
   return (
     <div>
       <h1 className="font-bold text-lg mb-4">Stage</h1>
       <div className="flex flex-wrap">
-        {dummyRoom.speakers.map((speaker, index) => (
+        {room?.participants?.filter(item => item.isOnStage === true).map((item, index) => (
           <div className="m-2" key={index}>
             <img
               className="h-10 w-10 object-cover rounded-2xl "
-              src={speaker.img}
-              alt="speakerpic"
+              src={item.photoUrl}
+              alt="Speakerpic"
             />
-            <p>{speaker.name}</p>
+            <p>{item.name}</p>
           </div>
         ))}
       </div>
@@ -25,14 +44,14 @@ const RoomParticipantsScreen = ({ dummyRoom, setIsOnChatScreen }) => {
 
       <h1 className="font-bold text-lg my-4">Participants</h1>
       <div className="flex flex-wrap">
-        {dummyRoom.attendees.map((participant, index) => (
+        {room?.participants?.filter(item => item.isOnStage === false).map((item, index) => (
           <div className="m-2" key={index}>
             <img
               className="h-10 w-10 object-cover rounded-2xl "
-              src={participant.img}
-              alt="participant-image"
+              src={item.photoUrl}
+              alt="Participantpic"
             />
-            <p>{participant.name}</p>
+            <p>{item.name}</p>
           </div>
         ))}
       </div>
