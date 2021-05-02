@@ -39,12 +39,14 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
                   <IoMdHand className="text-white" />
                 </div>
               )}
-              <img
-                className="h-10 w-10 object-cover rounded-2xl "
-                src={item.photoUrl}
-                alt="Speakerpic"
-              />
-              <p>{item.name.split(" ", 1)}</p>
+              <div className="flex flex-col justify-center">
+                <img
+                  className="h-10 w-10 object-cover rounded-2xl "
+                  src={item.photoUrl}
+                  alt="Speakerpic"
+                />
+                <p>{item.name.split(" ", 1)}</p>
+              </div>
             </div>
           ))}
       </div>
@@ -65,12 +67,14 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
                   <IoMdHand className="text-white" />
                 </div>
               )}
-              <img
-                className="h-10 w-10 object-cover rounded-2xl "
-                src={item.photoUrl}
-                alt="Participantpic"
-              />
-              <p>{item.name.split(" ", 1)}</p>
+              <div className="flex flex-col justify-center">
+                <img
+                  className="h-10 w-10 object-cover rounded-2xl "
+                  src={item.photoUrl}
+                  alt="Participantpic"
+                />
+                <p>{item.name.split(" ", 1)}</p>
+              </div>
             </div>
           ))}
       </div>
