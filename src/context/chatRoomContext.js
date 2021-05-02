@@ -20,8 +20,6 @@ export function RoomProvider({children}){
 
   })();
   
-  console.log("incontext", roomId);
-
   return <RoomContext.Provider value={{room,setRoom,roomId}}>
     {children}
     </RoomContext.Provider>
