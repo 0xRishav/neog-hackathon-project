@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
 import { db, auth } from "../firebase";
+
+import { useEffect, useState } from "react";
+=======
 import { checkIfExists } from '../utils';
 
+
 const RoomCard = ({ room, TotalSpeakers }) => {
-  const chatRoomRef = db.collection('chatRooms');
+  const chatRoomRef = db.collection("chatRooms");
 
   const addParticipantClickHandler = async (room) => {
     try {
       const { uid, email, displayName, photoURL } = auth.currentUser;
+
       if (!checkIfExists(room.participants, uid)) {
         const participants = room.participants.concat({
           id: uid,
@@ -26,6 +31,7 @@ const RoomCard = ({ room, TotalSpeakers }) => {
       console.log(err.message);
     }
   };
+
   
   return (
     <Link to={`/room/${room.id}`}>
@@ -57,9 +63,9 @@ const RoomCard = ({ room, TotalSpeakers }) => {
               </span>
             </div>
           ))}
+
         </div>
       </div>
-    </div>
     </Link>
   );
 };
