@@ -72,6 +72,7 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
                 placeholder="Type here..."
                 className="py-2 px-4 w-5/6 outline-none bg-transparent"
                 onChange={(e) => setText(e.target.value)}
+                // disabled={room.participants[room.host.id].isOnStage ? "true" : "false"}
               />
               <button className="absolute send-btn" type="submit">
                 <IoMdSend size="25" />
