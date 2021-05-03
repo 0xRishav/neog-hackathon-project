@@ -1,9 +1,13 @@
-import {auth} from '../firebase';
+import { auth } from "../firebase";
 
 const ChatText = ({ userId, photoUrl, text, name }) => {
   const currentUserId = auth.currentUser.uid;
   return (
-    <div>
+    <div
+      className={
+        userId === currentUserId ? "relative right-side-bubble" : "relative"
+      }
+    >
       <div
         className={
           userId === currentUserId

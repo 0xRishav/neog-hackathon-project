@@ -32,8 +32,9 @@ const RoomCard = ({ room, TotalSpeakers }) => {
   return (
     <Link to={`/room/${room.id}`}>
       <div
-        className="bg-white p-6 cursor-pointer rounded-2xl my-6"
+        className="p-6 cursor-pointer rounded-2xl my-6"
         onClick={() => addParticipantClickHandler(room)}
+        style={{ background: "#191F27" }}
       >
         <div className="flex justify-between items-center w-full mb-4">
           <h1>{room.topic}</h1>

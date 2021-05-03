@@ -10,7 +10,12 @@
       "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #f1eee4;
+    background: #0b0e11;
+    color: #dee3ea;
+  }
+
+  .bg-blue-500 {
+    background: #f24a4c;
   }
 
   code {
@@ -22,9 +27,10 @@
     margin: 40px;
     display: inline-block;
     position: relative;
-    width: 200px;
+    /* width: 200px; */
+    max-width: 70%;
     height: auto;
-    background-color: white;
+    background-color: #191f27;
   }
   .border {
     border: 8px solid #666;
@@ -107,7 +113,7 @@
     top: auto;
     bottom: -20px;
     border: 22px solid;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent #191f27;
   }
 
   .tri-right.border.btm-left-in:before {
@@ -156,8 +162,19 @@
     bottom: -20px;
     border: 12px solid;
     transform: scaleX(-1);
-    border-color: lightyellow white transparent transparent;
+    border-color: #191f27 #191f27 transparent transparent;
   }
+
+  .btm-right {
+    right: 20px;
+  }
+
+  .right-side-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   .tri-right.border.btm-right:before {
     content: " ";
     position: absolute;
@@ -180,7 +197,7 @@
     bottom: -20px;
     border: 22px solid;
     transform: scaleX(-1);
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent #191f27;
   }
 
   .tri-right.border.right-in:before {
@@ -254,7 +271,7 @@
     bottom: -20px;
     border: 22px solid;
     transform: scaleX(-1);
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent #191f27;
   }
 
   .form-wrapper {
@@ -263,7 +280,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #191f27;
   }
   .end-room-wrapper {
     padding: 1rem;

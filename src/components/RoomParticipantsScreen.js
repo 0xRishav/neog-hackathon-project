@@ -36,7 +36,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
   }
 
   return (
-    <div>
+    <div className="">
       <h1 className="font-bold text-lg mb-4">Stage</h1>
       <div className="flex flex-wrap">
         {room?.participants
@@ -63,7 +63,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
           ))}
       </div>
 
-      <div className="w-screen h-0.5 bg-gray-100" />
+      <div className="w-full h-0.5 bg-gray-100" />
 
       <h1 className="font-bold text-lg my-4">Participants</h1>
       <div className="flex flex-wrap">
@@ -90,14 +90,21 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
             </div>
           ))}
       </div>
-      <div className="flex justify-start items-center fixed bottom-12">
-        <button className="flex items-center px-4 py-1 bg-blue-500 rounded-2xl my-6" onClick={handRaisedClickHandler}>
+      <div
+        className="flex justify-start items-center fixed w-5/6 sm:w-4/6 sm:right-16 bottom-2 mx-auto"
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <button className="flex items-center px-4 py-1 bg-blue-500 rounded-2xl my-6">
           Raise Hand <IoMdHand size="40" />
         </button>
         <IoIosChatbubbles
           onClick={() => setIsOnChatScreen(true)}
           size="40"
-          className="ml-8"
+          className="ml-8 cursor-pointer"
         />
       </div>
     </div>
