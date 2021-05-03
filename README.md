@@ -1,6 +1,19 @@
 ## Team members:
 Ritika Dhiman, Rishav Bharti, Danish Ahmed
 
+## Screenshot
+ <kbd><img src="screenshotMobile.PNG" width="137"></kbd>
+
+ <kbd><img src="screenshotMobile1.PNG" width="137"></kbd>
+
+ <kbd><img src="screenshotMobile2.PNG" width="137"></kbd>
+
+ <kbd><img src="screenshotMobile3.PNG" width="137"></kbd>
+
+ <kbd><img src="screenshotMobile4.PNG" width="137"></kbd>
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
