@@ -34,7 +34,8 @@ const HomePage = () => {
         {chatRooms && chatRooms.filter(item => item.endTime === "").reverse().map((item, index) => (
           <RoomCard
             room={item}
-            key={index}            
+            key={index}
+            status="active"            
           />
         ))}
       </div>
@@ -43,7 +44,8 @@ const HomePage = () => {
         {chatRooms && chatRooms.filter(item => item.endTime !== "" && item.save ).reverse().map((item, index) => (
           <RoomCard
             room={item}
-            key={index}            
+            key={index} 
+            status="inactive"           
           />
         ))}
       </div>

@@ -25,7 +25,7 @@ export const EndRoom = ({ endDisplay, setEndDisplay }) => {
 
   const saveChatRoomHandler = async () => {
     setEndDisplay("none");
-    const updatedRoom = {...room, save: save, endTime: new Date()}
+    const updatedRoom = {...room, save: save, endTime: new Date(), messages: (save ? room.messages : []) }
     console.log("updating..", updatedRoom);
     await chatRoomRef.doc(roomId).update(updatedRoom);
     console.log("updated");

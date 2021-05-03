@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { checkIfExists } from "../utils";
 
-const RoomCard = ({ room, TotalSpeakers }) => {
+const RoomCard = ({ room, status }) => {
   const chatRoomRef = db.collection("chatRooms");
 
   const addParticipantClickHandler = async (room) => {
