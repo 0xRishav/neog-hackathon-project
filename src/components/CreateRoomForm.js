@@ -37,7 +37,7 @@ export const CreateRoomForm = ({ formDisplay, setFormDisplay }) => {
     .then(() => {
       setTopic("")
       console.log("ChatRoom successfully written in Firestore!");
-      setFormDisplay(!formDisplay);
+      setFormDisplay("none");
       // navigate(`/room/${roomId}`)
     })
     .catch((error) => {

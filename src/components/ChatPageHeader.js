@@ -10,13 +10,9 @@ import {useAuth} from "../context/authContext";
 
 const ChatPageHeader = () => {
   const [endDisplay, setEndDisplay] = useState("none");
-  const {currentUser} = useAuth();
-
   const [room, setRoom] = useState({});
   const { roomId } = useParams();
   const navigate = useNavigate();
-
-  // const  uid  = auth.currentUser && auth.currentUser.uid;
 
   useEffect(() => {
     (async () => {
@@ -28,6 +24,17 @@ const ChatPageHeader = () => {
       }
     })();
   }, []);
+
+  const { uid } = auth.currentUser;
+  const chatRoomRef = db.collection("chatRooms");
+  const query = chatRoomRef.orderBy("startTime");
+  const [chatRooms] = useCollectionData(query, { idField: "id" });
+  console.log("chatrooms are...", chatRooms);
+  let result;
+  async function getRooms() {
+    result = await chatRooms?.find((item) => uid === item.host.id);
+  }
+  getRooms();
 
   const leaveRoom = async () => {
     try {
@@ -68,12 +75,14 @@ const ChatPageHeader = () => {
         Leave
         <IoIosArrowRoundForward style={{ marginLeft: "5px" }} />
       </button>
+      {result && (
         <button
           onClick={() => setEndDisplay("block")}
           className="px-4 py-1 bg-blue-500 rounded-md my-6"
         >
           End Chat
         </button>
+      )}
     </div>
   );
 };
