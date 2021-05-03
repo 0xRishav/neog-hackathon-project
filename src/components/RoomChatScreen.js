@@ -30,7 +30,6 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
 
     const chatRoomRef = db.collection("chatRooms");
 
-
     console.log("chatroom ref is...", chatRoomRef);
 
     try {
@@ -63,8 +62,8 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
         <ChatText {...msg} key={index} />
       ))}
       <div ref={scrollDiv} className="scrollDiv"></div>
-      <div className="flex items-center fixed mx-auto w-5/6 bottom-0 fade--bottom">
-        <div className="w-5/6 mx-auto flex items-center">
+      <div className="flex items-center fixed w-5/6 sm:w-4/6  xl:w-2/6 2xl:w-1/6 mx-auto bottom-2 fade--bottom">
+        <div className="mx-auto flex items-center">
           <div className="bg-2 rounded-2xl relative">
             <form onSubmit={(e) => sendMessageClickHandler(e)}>
               <input
@@ -81,7 +80,11 @@ const RoomChatScreen = ({ setIsOnChatScreen }) => {
           </div>
         </div>
 
-        <FaUserFriends size="30" onClick={() => setIsOnChatScreen(false)} />
+        <FaUserFriends
+          size="30"
+          onClick={() => setIsOnChatScreen(false)}
+          className="cursor-pointer"
+        />
       </div>
     </div>
   );

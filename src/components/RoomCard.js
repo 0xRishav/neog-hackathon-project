@@ -32,8 +32,9 @@ const RoomCard = ({ room, TotalSpeakers }) => {
   return (
     <Link to={`/room/${room.id}`}>
       <div
-        className="bg-white p-6 cursor-pointer rounded-2xl my-6"
+        className="p-6 cursor-pointer rounded-2xl my-6"
         onClick={() => addParticipantClickHandler(room)}
+        style={{ background: "#191F27" }}
       >
         <div className="flex justify-between items-center w-full mb-4">
           <h1>{room.topic}</h1>
@@ -59,23 +60,6 @@ const RoomCard = ({ room, TotalSpeakers }) => {
               .map((item, index) => (
                 <div className="" key={index}>
                   <span className="h-8 w-8 object-cover rounded-2xl mx-1 text-xs">
-                    {`${item.name.split(" ", 1)}`}
-                    {index <
-                    room.participants.filter((item) => item.isOnStage === true)
-                      .length -
-                      1
-                      ? ","
-                      : ""}
-                  </span>
-                </div>
-              ))}
-          </div>
-          <div className="flex items-center mt-2">
-            {room.participants
-              .filter((item) => item.isOnStage === true)
-              .map((item, index) => (
-                <div className="" key={index}>
-                  <span className="h-8 w-8 object-cover rounded-2xl mx-1">
                     {`${item.name.split(" ", 1)}`}
                     {index <
                     room.participants.filter((item) => item.isOnStage === true)
