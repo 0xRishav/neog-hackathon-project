@@ -2,15 +2,9 @@
 Ritika Dhiman, Rishav Bharti, Danish Ahmed
 
 ## Screenshot
- <kbd><img src="screenshotMobile.PNG" width="137"></kbd>
-
- <kbd><img src="screenshotMobile1.PNG" width="137"></kbd>
-
- <kbd><img src="screenshotMobile2.PNG" width="137"></kbd>
-
- <kbd><img src="screenshotMobile3.PNG" width="137"></kbd>
-
- <kbd><img src="screenshotMobile4.PNG" width="137"></kbd>
+ <kbd><img src="screenshotMobile.PNG" width="137"></kbd>     <kbd><img src="screenshotMobile2.PNG" width="137"></kbd>
+ 
+ <kbd><img src="screenshotMobile3.PNG" width="137"></kbd>      <kbd><img src="screenshotMobile4.PNG" width="137"></kbd>
 
 
 
