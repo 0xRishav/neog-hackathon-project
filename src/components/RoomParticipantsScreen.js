@@ -25,15 +25,17 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
   const chatRoomRef = db.collection("chatRooms");
 
   const handRaisedClickHandler = async () => {
-    setHandRaised(state => !state);
-    const {uid} = auth.currentUser;
-    const currUser = room.participants.filter(item => item.id === uid);
-    const updatedUser = {...currUser[0], isHandRaised: handRaised}
-    const updatedParticipants = room.participants.map(item => item.id === uid ? updatedUser : item);
+    setHandRaised((state) => !state);
+    const { uid } = auth.currentUser;
+    const currUser = room.participants.filter((item) => item.id === uid);
+    const updatedUser = { ...currUser[0], isHandRaised: handRaised };
+    const updatedParticipants = room.participants.map((item) =>
+      item.id === uid ? updatedUser : item
+    );
     console.log("updating..", updatedParticipants);
     await chatRoomRef.doc(roomId).update({ participants: updatedParticipants });
     console.log("updated");
-  }
+  };
 
   return (
     <div className="">
@@ -91,7 +93,7 @@ const RoomParticipantsScreen = ({ setIsOnChatScreen }) => {
           ))}
       </div>
       <div
-        className="flex justify-start items-center fixed w-5/6 sm:w-4/6 sm:right-16 bottom-2 mx-auto"
+        className="flex justify-start items-center fixed w-5/6 sm:w-4/6 sm:right-20 bottom-2 mx-auto"
         style={{
           display: "flex",
           justifyContent: "space-around",
